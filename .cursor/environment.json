@@ -1,0 +1,4 @@
+{
+  "name": "a3c_continuous",
+  "install": "bash .cursor/install.sh"
+}

@@ -1,2 +1,9 @@
 *~
 .DS_Store
+__pycache__/
+*.pyc
+
+# Generated at runtime by main.py / test.py / gym_eval.py
+logs/*_log
+logs/*_mon_log
+*_monitor/
