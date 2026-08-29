@@ -20,7 +20,11 @@ MINICONDA_URL="https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_6
 echo "==> [a3c setup] Ensuring Miniconda is installed at ${CONDA_HOME}"
 if [ ! -x "${CONDA_HOME}/bin/conda" ]; then
     tmp_installer="$(mktemp --suffix=.sh)"
-    curl -fsSL -o "${tmp_installer}" "${MINICONDA_URL}"
+    if command -v curl >/dev/null 2>&1; then
+        curl -fsSL -o "${tmp_installer}" "${MINICONDA_URL}"
+    else
+        wget -qO "${tmp_installer}" "${MINICONDA_URL}"
+    fi
     bash "${tmp_installer}" -b -p "${CONDA_HOME}"
     rm -f "${tmp_installer}"
 else
